@@ -829,7 +829,7 @@
             <div class="contact-grid">
                 <div class="contact-form">
                     <div id="form-message" class="form-message"></div>
-                    <form action="https://formspree.io/f/mnqevwly" method="POST" id="contact-form">
+                    <form id="contact-form" onsubmit="handleFormSubmit(event)">
                         <div class="form-group">
                             <label for="name">Name</label>
                             <input type="text" id="name" name="name" required>
@@ -964,12 +964,33 @@
     </footer>
 
     <script>
-        // Form handling
-        document.getElementById('contact-form').addEventListener('submit', function(e) {
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            const form = document.getElementById('contact-form');
+            const formData = new FormData(form);
+            const name = formData.get('name');
+            const email = formData.get('email');
+            const service = formData.get('service');
+            const topic = formData.get('topic');
+            const deadline = formData.get('deadline');
+            
+            const serviceLabels = {
+                'basic': 'Basic ($150/post)',
+                'professional': 'Professional ($350/post)',
+                'enterprise': 'Enterprise (Custom)'
+            };
+            
+            const subject = `Content Request: ${serviceLabels[service] || 'General Inquiry'} from ${name}`;
+            const body = `Name: ${name}%0D%0AEmail: ${email}%0D%0AService: ${serviceLabels[service] || service}%0D%0ADeadline: ${deadline || 'Not specified'}%0D%0A%0D%0AProject Description:%0D%0A${topic}`;
+            
+            window.location.href = `mailto:bob@bobrenze.com?subject=${encodeURIComponent(subject)}&body=${body}`;
+            
             const messageDiv = document.getElementById('form-message');
             messageDiv.className = 'form-message success';
-            messageDiv.textContent = 'Sending your request...';
-        });
+            messageDiv.textContent = 'Opening your email client... If it doesn\'t open, please email bob@bobrenze.com directly.';
+            
+            return false;
+        }
     </script>
 </body>
 </html>
