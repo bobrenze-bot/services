@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Operations Snapshot — 48-Hour Diagnostic for SMBs</title>
+    <meta name="description" content="Find the AI opportunities hiding in your business. 48-hour diagnostic with dollar amounts attached to each opportunity. $297. Money-back guarantee.">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #fff;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 100px 0 80px;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+        
+        .hero .subhead {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            opacity: 0.95;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .hero .price-highlight {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 40px;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: #fff;
+            color: #667eea;
+            padding: 18px 48px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.2rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+            margin: 0 10px 10px;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        .cta-button.secondary {
+            background: transparent;
+            border: 2px solid white;
+            color: white;
+        }
+        
+        .trust-signals {
+            margin-top: 40px;
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        .guarantee-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255,255,255,0.2);
+            padding: 10px 20px;
+            border-radius: 20px;
+            margin-top: 20px;
+        }
+        
+        /* Problem Section */
+        .problem {
+            padding: 80px 0;
+            background: #f8f9fa;
+        }
+        
+        .problem h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .problem > div > p {
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            text-align: center;
+            color: #555;
+        }
+        
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .problem-card {
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        
+        .problem-card h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+        
+        .problem-card p {
+            color: #666;
+            font-size: 1rem;
+        }
+        
+        /* What's Included Section */
+        .included {
+            padding: 80px 0;
+            background: #fff;
+        }
+        
+        .included h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .included > div > p {
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            text-align: center;
+            color: #555;
+        }
+        
+        .phases {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .phase {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .phase-number {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 30px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        .phase h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        
+        .phase ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .phase ul li {
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+            color: #555;
+        }
+        
+        .phase ul li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
+        }
+        
+        .deliverable-preview {
+            background: #fff;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 25px;
+            margin-top: 40px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .deliverable-preview h3 {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        
+        .deliverable-preview ul {
+            list-style: none;
+            padding: 0;
+            columns: 2;
+            column-gap: 30px;
+        }
+        
+        .deliverable-preview ul li {
+            padding: 5px 0;
+            color: #555;
+        }
+        
+        /* Sample Findings Section */
+        .sample {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8ec 100%);
+        }
+        
+        .sample h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .sample > div > p {
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            text-align: center;
+            color: #555;
+        }
+        
+        .case-study {
+            background: #fff;
+            border-radius: 12px;
+            padding: 40px;
+            max-width: 900px;
+            margin: 0 auto;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        
+        .case-study-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+        
+        .case-study-header h3 {
+            font-size: 1.5rem;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        .case-study-header .result-highlight {
+            font-size: 1.3rem;
+            color: #667eea;
+            font-weight: 600;
+        }
+        
+        .finding {
+            margin: 25px 0;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid;
+        }
+        
+        .finding.high-impact {
+            border-left-color: #22c55e;
+        }
+        
+        .finding.medium-impact {
+            border-left-color: #eab308;
+        }
+        
+        .finding.low-impact {
+            border-left-color: #ef4444;
+        }
+        
+        .finding.strategic {
+            border-left-color: #667eea;
+        }
+        
+        .finding h4 {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        
+        .finding .savings {
+            font-weight: 600;
+            color: #22c55e;
+            font-size: 1.1rem;
+        }
+        
+        .case-study-summary {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 30px;
+            border-top: 2px solid #f0f0f0;
+        }
+        
+        .case-study-summary .big-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #667eea;
+        }
+        
+        /* Pricing Section */
+        .pricing {
+            padding: 80px 0;
+            background: #fff;
+        }
+        
+        .pricing h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .pricing > div > p {
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            text-align: center;
+            color: #555;
+        }
+        
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .pricing-card {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 40px 30px;
+            text-align: center;
+            position: relative;
+            border: 2px solid transparent;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .pricing-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+        
+        .pricing-card.featured {
+            border-color: #667eea;
+            background: #fff;
+            transform: scale(1.05);
+        }
+        
+        .pricing-card.featured:hover {
+            transform: scale(1.05) translateY(-5px);
+        }
+        
+        .pricing-card .tier-name {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        .pricing-card .price {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #667eea;
+            margin: 20px 0;
+        }
+        
+        .pricing-card .price span {
+            font-size: 1rem;
+            color: #666;
+            font-weight: 400;
+        }
+        
+        .pricing-card .description {
+            color: #666;
+            margin-bottom: 25px;
+            font-size: 0.95rem;
+        }
+        
+        .pricing-card ul {
+            list-style: none;
+            padding: 0;
+            text-align: left;
+            margin-bottom: 30px;
+        }
+        
+        .pricing-card ul li {
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+            color: #555;
+            font-size: 0.95rem;
+        }
+        
+        .pricing-card ul li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #22c55e;
+            font-weight: bold;
+        }
+        
+        .pricing-card .cta {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 14px 32px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.2s;
+        }
+        
+        .pricing-card .cta:hover {
+            background: #5a67d8;
+        }
+        
+        .popular-badge {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #667eea;
+            color: white;
+            padding: 6px 20px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+        
+        /* FAQ Section */
+        .faq {
+            padding: 80px 0;
+            background: #f8f9fa;
+        }
+        
+        .faq h2 {
+            font-size: 2rem;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+        
+        .faq-item {
+            max-width: 800px;
+            margin: 0 auto 20px;
+            background: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .faq-question {
+            padding: 20px 25px;
+            font-weight: 600;
+            color: #333;
+            cursor: pointer;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        
+        .faq-answer {
+            padding: 20px 25px;
+            color: #555;
+            line-height: 1.7;
+        }
+        
+        .faq-answer strong {
+            color: #333;
+        }
+        
+        /* Final CTA Section */
+        .final-cta {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .final-cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .final-cta p {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            opacity: 0.95;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* Footer */
+        .footer {
+            background: #1a1a2e;
+            color: #aaa;
+            padding: 40px 0;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+        
+        .footer a {
+            color: #667eea;
+            text-decoration: none;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero .subhead {
+                font-size: 1.1rem;
+            }
+            
+            .phases,
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .pricing-card.featured {
+                transform: none;
+            }
+            
+            .deliverable-preview ul {
+                columns: 1;
+            }
+            
+            .case-study {
+                padding: 25px;
+            }
+            
+            .trust-signals {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Find the AI Opportunities Hiding in Your Business</h1>
+            <p class="subhead">In 48 hours, get a prioritized list of what AI could actually automate in your operations — with dollar amounts attached to each opportunity. No implementation sales pitch. Just the facts.</p>
+            <p class="price-highlight">Starting at $297 · 100% Money-Back Guarantee</p>
+            <div>
+                <a href="#pricing" class="cta-button">Get Your AI Operations Snapshot</a>
+                <a href="#sample" class="cta-button secondary">View Sample Report</a>
+            </div>
+            <div class="guarantee-badge">
+                <span>✓</span> Don't find 5+ hours/week of saveable time? Full refund. No questions.
+            </div>
+            <div class="trust-signals">
+                <span>⚡ 48-Hour Delivery</span>
+                <span>📊 Fixed Scope — No Creep</span>
+                <span>🔒 Diagnostic Only — No Upsell</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section class="problem">
+        <div class="container">
+            <h2>Most SMBs Know AI Could Help. Few Know Where to Start.</h2>
+            <p>You have a vague sense that "AI could help" but no specific list. You're too busy running the business to map it out. Meanwhile, hours of automatable work pile up every week.</p>
+            
+            <div class="problem-grid">
+                <div class="problem-card">
+                    <h3>❓ The Uncertainty Problem</h3>
+                    <p>"Where would AI even fit in my business?" Without a clear roadmap, AI stays on your "someday" list for months (or years).</p>
+                </div>
+                <div class="problem-card">
+                    <h3>⏰ The Time Problem</h3>
+                    <p>Your team spends hours on tasks that software could handle — onboarding clients, chasing invoices, scheduling, follow-ups.</p>
+                </div>
+                <div class="problem-card">
+                    <h3>💰 The Cost Problem</h3>
+                    <p>Consultants want $10K+ for a "digital transformation assessment." You need answers, not a 6-month engagement.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What's Included Section -->
+    <section class="included">
+        <div class="container">
+            <h2>What's Included: The AI Operations Snapshot</h2>
+            <p>A fixed-scope diagnostic that maps your workflows, identifies automation opportunities, and ranks them by ROI. You own the roadmap — implement with your team or hire whoever you want.</p>
+            
+            <div class="phases">
+                <div class="phase">
+                    <span class="phase-number">1</span>
+                    <h3>Discovery (2 hours)</h3>
+                    <ul>
+                        <li>Process mapping questionnaire</li>
+                        <li>Tool stack audit</li>
+                        <li>Time-tracking analysis</li>
+                        <li>Communication pattern review</li>
+                    </ul>
+                </div>
+                <div class="phase">
+                    <span class="phase-number">2</span>
+                    <h3>Analysis (4 hours)</h3>
+                    <ul>
+                        <li>Workflow bottleneck identification</li>
+                        <li>Automation opportunity scoring (1-10)</li>
+                        <li>Cost/savings calculations</li>
+                        <li>Risk assessment per opportunity</li>
+                    </ul>
+                </div>
+                <div class="phase">
+                    <span class="phase-number">3</span>
+                    <h3>Deliverable (48 hours)</h3>
+                    <ul>
+                        <li>3-5 page PDF report</li>
+                        <li>Prioritized quick wins</li>
+                        <li>ROI projections (conservative & optimistic)</li>
+                        <li>Implementation roadmap</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="deliverable-preview">
+                <h3>📋 What You Get — And What You Don't</h3>
+                <ul>
+                    <li>✅ Complete diagnostic report</li>
+                    <li>✅ Go/No-Go recommendations</li>
+                    <li>✅ 15-min walkthrough call included</li>
+                    <li>❌ No actual implementation</li>
+                    <li>❌ No software procurement</li>
+                    <li>❌ No ongoing contracts</li>
+                    <li>❌ No upsell pressure</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sample Findings Section -->
+    <section class="sample" id="sample">
+        <div class="container">
+            <h2>Sample Findings: Real Numbers from a Real Audit</h2>
+            <p>Here's what a 6-person creative agency learned from their AI Operations Snapshot. This is the actual level of detail you'll receive.</p>
+            
+            <div class="case-study">
+                <div class="case-study-header">
+                    <h3>Coastal Design Studio</h3>
+                    <p class="result-highlight">Found $24,400/year in recoverable time from 2 of 4 opportunities</p>
+                </div>
+                
+                <div class="finding high-impact">
+                    <h4>🟢 Finding #1: Client Onboarding — Automate First</h4>
+                    <p>Project manager spends 4 hours per client manually creating folders, sending welcome emails, scheduling kickoff calls. <strong>Volume:</strong> 8-12 new clients/month = 32-48 hours/month.</p>
+                    <p class="savings">💰 Annual Savings: $19,200–28,800</p>
+                </div>
+                
+                <div class="finding medium-impact">
+                    <h4>🟡 Finding #2: Invoice Follow-Up — Quick Win</h4>
+                    <p>Owner manually checks unpaid invoices weekly, sends reminder emails. <strong>Volume:</strong> 2-3 hours/week.</p>
+                    <p class="savings">💰 Annual Savings: $5,200 + improved cash flow</p>
+                </div>
+                
+                <div class="finding low-impact">
+                    <h4>🔴 Finding #3: Social Media — Skip for Now</h4>
+                    <p>Designer spends 3 hrs/week posting manually. Automation would save ~2 hrs/week but designer enjoys this work — automation would demoralize team.</p>
+                    <p><strong>Verdict:</strong> Honest "no-go" builds trust. Revisit if volume increases.</p>
+                </div>
+                
+                <div class="finding strategic">
+                    <h4>🔵 Finding #4: Proposal Generation — Strategic Play</h4>
+                    <p>Custom proposals take 6-8 hours each. Template library + AI customization could cut to 2 hours. <strong>Impact:</strong> 20+ proposals/year × 4 hrs saved = 80 hrs/year = $4,000.</p>
+                    <p><strong>Recommendation:</strong> Pilot on 3 proposals before full rollout.</p>
+                </div>
+                
+                <div class="case-study-summary">
+                    <p><strong>Implementation Cost:</strong> $297 + $20/month in tools</p>
+                    <p><strong>Payback Period:</strong> 2 weeks</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <h2>Choose Your Tier</h2>
+            <p>Three fixed-scope options based on team size and complexity. All include the same 48-hour delivery and money-back guarantee.</p>
+            
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <div class="tier-name">Starter Audit</div>
+                    <div class="price">$297<span>one-time</span></div>
+                    <p class="description">Perfect for solo operators and 1-3 person teams</p>
+                    <ul>
+                        <li>Bookkeeping automation review</li>
+                        <li>Scheduling & calendar optimization</li>
+                        <li>Email triage analysis</li>
+                        <li>Basic tool stack audit</li>
+                        <li>3-5 page report</li>
+                        <li>15-min walkthrough call</li>
+                    </ul>
+                    <a href="#" class="cta" onclick="alert('Booking system coming soon. Email hello@bobrenze.com to reserve your slot.'); return false;">Get Started</a>
+                </div>
+                
+                <div class="pricing-card featured">
+                    <div class="popular-badge">Most Popular</div>
+                    <div class="tier-name">Growth Audit</div>
+                    <div class="price">$497<span>one-time</span></div>
+                    <p class="description">Best for 5-15 employees with established workflows</p>
+                    <ul>
+                        <li>Everything in Starter, plus:</li>
+                        <li>Operations workflow mapping</li>
+                        <li>Light customer automation review</li>
+                        <li>Cross-department coordination analysis</li>
+                        <li>3-5 page report + action matrix</li>
+                        <li>15-min walkthrough call</li>
+                    </ul>
+                    <a href="#" class="cta" onclick="alert('Booking system coming soon. Email hello@bobrenze.com to reserve your slot.'); return false;">Get Started</a>
+                </div>
+                
+                <div class="pricing-card">
+                    <div class="tier-name">Scale Audit</div>
+                    <div class="price">$797<span>one-time</span></div>
+                    <p class="description">For 15-50 employees across multiple departments</p>
+                    <ul>
+                        <li>Everything in Growth, plus:</li>
+                        <li>Cross-functional automation mapping</li>
+                        <li>Coordination pain point analysis</li>
+                        <li>Department-specific recommendations</li>
+                        <li>5-7 page comprehensive report</li>
+                        <li>30-min strategy call included</li>
+                    </ul>
+                    <a href="#" class="cta" onclick="alert('Booking system coming soon. Email hello@bobrenze.com to reserve your slot.'); return false;">Get Started</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq">
+        <div class="container">
+            <h2>Frequently Asked Questions</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question">❓ What if you don't find 5 hours/week of saveable time?</div>
+                <div class="faq-answer">
+                    <strong>You get a full refund.</strong> We deliver the report first, you review it, and if we haven't identified at least 5 hours per week of automatable work, just reply and we'll refund 100%. No questions, no hassle.
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">❓ Do you actually implement the recommendations?</div>
+                <div class="faq-answer">
+                    <strong>No — and that's intentional.</strong> We're strictly diagnostic. You can use our roadmap with your own IT person, hire a freelancer, or we can introduce you to vetted implementation partners. But there's no pressure to buy implementation services from us.
+                </div>
+            </div>
+            
+            <div class="faq-question">❓ What if I don't understand the technical parts of the report?</div>
+                <div class="faq-answer">
+                    <strong>Written in plain English.</strong> No jargon, no buzzwords. Every recommendation includes a "what this means in plain terms" explanation. Plus the 15-minute walkthrough call is included specifically to answer questions.
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">❓ Can't I just figure this out myself?</div>
+                <div class="faq-answer">
+                    <strong>Sure — but will you?</strong> Most business owners have had "map out automation opportunities" on their to-do list for 18+ months. For $297, you get a prioritized, researched, ROI-calculated roadmap in 48 hours instead of another year of "I'll get to it eventually."
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">❓ How is this different from hiring a consultant?</div>
+                <div class="faq-answer">
+                    <strong>Speed, scope, and price.</strong> Traditional consultants charge $150-300/hour and want multi-month engagements. We deliver a complete diagnostic in 48 hours for less than the cost of 2 consultant hours. Fixed scope means no scope creep. You get answers, not a new dependent relationship.
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">❓ What happens after I buy?</div>
+                <div class="faq-answer">
+                    <ol style="margin-left: 20px; margin-top: 10px;">
+                        <li>You get an intake questionnaire immediately</li>
+                        <li>We schedule a 30-min kickoff call within 24 hours</li>
+                        <li>Our agent team analyzes your operations (8 hours total)</li>
+                        <li>You receive the PDF report within 48 business hours</li>
+                        <li>We schedule your 15-min walkthrough call</li>
+                        <li>Invoice sent (net-7 payment terms — pay after you review)</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA Section -->
+    <section class="final-cta">
+        <div class="container">
+            <h2>Stop Guessing. Start Knowing.</h2>
+            <p>In 48 hours, you'll have a prioritized list of exactly what AI could automate in your business — with dollar amounts, implementation steps, and honest "no-go" recommendations.</p>
+            <div>
+                <a href="#pricing" class="cta-button">Get Your AI Operations Snapshot — $297</a>
+            </div>
+            <div class="guarantee-badge" style="margin-top: 30px;">
+                <span>✓</span> 100% Money-Back Guarantee · 48-Hour Delivery · No Upsell Pressure
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>© 2026 BobRenze AI Consulting · <a href="https://bobrenze.com">bobrenze.com</a></p>
+            <p style="margin-top: 10px; font-size: 0.85rem;">Questions? Email <a href="mailto:hello@bobrenze.com">hello@bobrenze.com</a></p>
+        </div>
+    </footer>
+</body>
+</html>
