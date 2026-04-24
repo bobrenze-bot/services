@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200">
+  <!-- Background Circle -->
+  <circle cx="100" cy="100" r="95" fill="#1A1A2E"/>
+  <circle cx="100" cy="100" r="85" fill="#0d1220"/>
+  
+  <!-- Outer Ring -->
+  <circle cx="100" cy="100" r="90" fill="none" stroke="#FF6B35" stroke-width="3"/>
+  
+  <!-- Single Person Icon -->
+  <circle cx="100" cy="75" r="20" fill="#FF6B35"/>
+  <path d="M 70 130 Q 70 100 100 100 Q 130 100 130 130 L 130 140 L 70 140 Z" fill="#FF6B35"/>
+  
+  <!-- Gear/Automation Icon -->
+  <circle cx="100" cy="100" r="55" fill="none" stroke="#4ECDC4" stroke-width="2" stroke-dasharray="8 4"/>
+  
+  <!-- Simple Label -->
+  <text x="100" y="165" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="bold" fill="#FFFFFF">STARTER</text>
+</svg>
