@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BobRenze Offer Ladder — Verified by BobRenze</title>
+    <style>
+        :root {
+            --primary: #FF6B35;
+            --secondary: #1A1A2E;
+            --accent: #4ECDC4;
+            --neutral: #F7F7F7;
+            --text-dark: #1A1A2E;
+            --text-light: #F7F7F7;
+            --border: #E0E0E0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, var(--neutral) 0%, #fff 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+            color: var(--text-dark);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .brand-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--secondary);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .brand-badge::before {
+            content: '✓';
+            background: var(--accent);
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .tagline {
+            display: inline-block;
+            background: var(--primary);
+            color: var(--text-light);
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        /* Progression Note */
+        .progression-note {
+            background: linear-gradient(135deg, var(--secondary) 0%, #2d2d4a 100%);
+            color: white;
+            border-radius: 16px;
+            padding: 30px 40px;
+            margin-bottom: 50px;
+            text-align: center;
+        }
+
+        .progression-note h2 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--accent);
+        }
+
+        .progression-note p {
+            font-size: 1rem;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+
+        .progression-path {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .path-step {
+            background: rgba(255,255,255,0.1);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+        }
+
+        .path-arrow {
+            color: var(--accent);
+            font-size: 1.2rem;
+        }
+
+        /* Ladder Container */
+        .ladder-container {
+            display: flex;
+            flex-direction: column-reverse;
+            align-items: center;
+            gap: 0;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        /* Ladder Rungs */
+        .rung {
+            width: 100%;
+            max-width: 900px;
+            margin: 0;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+        }
+
+        .rung:hover {
+            transform: translateX(10px);
+        }
+
+        .rung-content {
+            background: white;
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            position: relative;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+
+        /* Entry tier - teal */
+        .rung.entry .rung-content { 
+            border-color: #4ECDC4; 
+            border-left-width: 6px;
+        }
+        .rung.entry .tier-badge { background: #4ECDC4; }
+
+        /* Tiers 1-3 - teal gradient intensity */
+        .rung.tier-1 .rung-content { 
+            border-color: #3DBBB4; 
+            border-left-width: 6px;
+        }
+        .rung.tier-1 .tier-badge { background: #3DBBB4; }
+
+        .rung.tier-2 .rung-content { 
+            border-color: #2CA9A2; 
+            border-left-width: 6px;
+        }
+        .rung.tier-2 .tier-badge { background: #2CA9A2; }
+
+        .rung.tier-3 .rung-content { 
+            border-color: #1B9790; 
+            border-left-width: 6px;
+        }
+        .rung.tier-3 .tier-badge { background: #1B9790; }
+
+        /* Premium tier - orange */
+        .rung.premium .rung-content { 
+            border-color: var(--primary); 
+            border-left-width: 6px;
+            box-shadow: 0 4px 12px rgba(255,107,53,0.15);
+        }
+        .rung.premium .tier-badge { 
+            background: var(--primary);
+            box-shadow: 0 4px 12px rgba(255,107,53,0.3);
+        }
+
+        /* Connecting Lines */
+        .rung:not(:first-child)::before {
+            content: '';
+            position: absolute;
+            bottom: 100%;
+            left: 60px;
+            width: 3px;
+            height: 40px;
+            background: linear-gradient(to bottom, var(--border), var(--accent));
+            z-index: 0;
+        }
+
+        .rung:first-child::before {
+            display: none;
+        }
+
+        /* Tier Badge */
+        .tier-badge {
+            min-width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: white;
+            flex-shrink: 0;
+        }
+
+        /* Content */
+        .rung-info {
+            flex: 1;
+        }
+
+        .rung-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 4px;
+            flex-wrap: wrap;
+        }
+
+        .rung-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--secondary);
+        }
+
+        .verified-tag {
+            background: var(--accent);
+            color: white;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .rung-promise {
+            font-size: 0.95rem;
+            color: #666;
+            font-style: italic;
+            margin-bottom: 12px;
+        }
+
+        .rung-meta {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-bottom: 12px;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.9rem;
+        }
+
+        .meta-label {
+            font-weight: 600;
+            color: var(--secondary);
+        }
+
+        .meta-value {
+            color: #666;
+        }
+
+        .rung-deliverable {
+            font-size: 0.9rem;
+            color: #555;
+            line-height: 1.5;
+        }
+
+        .rung-offerings {
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid var(--border);
+        }
+
+        .offerings-title {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
+
+        .offerings-list {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .offerings-list li {
+            background: var(--neutral);
+            padding: 4px 12px;
+            border-radius: 16px;
+            font-size: 0.85rem;
+            color: #555;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: white;
+            border-radius: 16px;
+            padding: 40px;
+            text-align: center;
+            border: 2px solid var(--primary);
+            margin-bottom: 40px;
+        }
+
+        .cta-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--secondary);
+            margin-bottom: 20px;
+        }
+
+        .cta-text {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 30px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 16px 40px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+
+        .cta-button:hover {
+            background: #E55A2B;
+            transform: translateY(-2px);
+        }
+
+        /* Offer Summaries */
+        .summaries-section {
+            background: white;
+            border-radius: 16px;
+            padding: 40px;
+            margin-bottom: 40px;
+        }
+
+        .summaries-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--secondary);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .summary-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .summary-card {
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .summary-card:hover {
+            border-color: var(--accent);
+            box-shadow: 0 4px 12px rgba(78,205,196,0.1);
+        }
+
+        .summary-card.premium-card {
+            border-color: var(--primary);
+        }
+
+        .summary-card.premium-card:hover {
+            box-shadow: 0 4px 12px rgba(255,107,53,0.15);
+        }
+
+        .summary-tier {
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--accent);
+            margin-bottom: 8px;
+        }
+
+        .summary-card.premium-card .summary-tier {
+            color: var(--primary);
+        }
+
+        .summary-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--secondary);
+            margin-bottom: 8px;
+        }
+
+        .summary-price {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 12px;
+        }
+
+        .summary-desc {
+            font-size: 0.9rem;
+            color: #666;
+            line-height: 1.5;
+        }
+
+        /* Comparison Table */
+        .comparison-section {
+            background: white;
+            border-radius: 16px;
+            padding: 40px;
+            overflow-x: auto;
+        }
+
+        .comparison-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--secondary);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+        }
+
+        th {
+            background: var(--secondary);
+            color: white;
+            padding: 16px 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        th:first-child {
+            border-radius: 8px 0 0 0;
+        }
+
+        th:last-child {
+            border-radius: 0 8px 0 0;
+        }
+
+        td {
+            padding: 16px 12px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        tr:nth-child(even) {
+            background: var(--neutral);
+        }
+
+        tr:hover {
+            background: #E8F6F5;
+        }
+
+        .tier-highlight {
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 60px;
+            text-align: center;
+            padding: 30px;
+            color: #999;
+            font-size: 0.9rem;
+        }
+
+        .verification-footer {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--secondary);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 24px;
+            margin-bottom: 20px;
+        }
+
+        .verification-footer::before {
+            content: '✓';
+            background: var(--accent);
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            .progression-note {
+                padding: 24px;
+            }
+
+            .progression-path {
+                flex-direction: column;
+                gap: 8px;
+            }
+
+            .path-arrow {
+                transform: rotate(90deg);
+            }
+
+            .rung-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .tier-badge {
+                margin: 0 auto;
+            }
+
+            .rung-header {
+                justify-content: center;
+            }
+
+            .rung-meta {
+                justify-content: center;
+            }
+
+            table {
+                font-size: 0.8rem;
+            }
+
+            th, td {
+                padding: 12px 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="brand-badge">Verified by BobRenze</div>
+            <h1>Service Offer Ladder</h1>
+            <p class="subtitle">From Quick Audit to Long-Term Crew Oversight</p>
+            <span class="tagline">Start Small. Scale with Confidence.</span>
+        </header>
+
+        <!-- Progression Note -->
+        <div class="progression-note">
+            <h2>How Clients Progress Through the Ladder</h2>
+            <p>
+                Most clients start with the <strong>Quick Diagnostic</strong> to assess their situation. 
+                From there, they typically advance to specific fixes (Self-Healing or Documentation) based on identified pain points. 
+                As trust builds and needs expand, clients move into <strong>ongoing consulting</strong> and eventually 
+                <strong>Crew Oversight</strong> — our premium tier with guaranteed uptime and long-term partnership terms.
+            </p>
+            <div class="progression-path">
+                <span class="path-step">🔍 Diagnostic</span>
+                <span class="path-arrow">→</span>
+                <span class="path-step">🛠️ Fix Critical Issues</span>
+                <span class="path-arrow">→</span>
+                <span class="path-step">📋 Consulting</span>
+                <span class="path-arrow">→</span>
+                <span class="path-step">★ Crew Oversight</span>
+            </div>
+        </div>
+
+        <!-- Visual Ladder -->
+        <div class="ladder-container">
+            <!-- Entry: Quick Audit -->
+            <div class="rung entry">
+                <div class="rung-content">
+                    <div class="tier-badge">🔍</div>
+                    <div class="rung-info">
+                        <div class="rung-header">
+                            <h3 class="rung-title">Quick Audit</h3>
+                            <span class="verified-tag">Verified</span>
+                        </div>
+                        <p class="rung-promise">"Find your starting point in 72 hours"</p>
+                        <div class="rung-meta">
+                            <div class="meta-item">
+                                <span class="meta-label">Price:</span>
+                                <span class="meta-value">$300 flat</span>
+                            </div>
+                            <div class="meta-item">
+                                <span class="meta-label">Timeline:</span>
+                                <span class="meta-value">72 hours</span>
+                            </div>
+                        </div>
+                        <p class="rung-deliverable">
+                            <strong>Deliverable:</strong> Structured assessment identifying your top 5 reliability risks, pain point diagnosis, and recommended service tier. Low-risk entry to test our methodology.
+                        </p>
+                        <div class="rung-offerings">
+                            <div class="offerings-title">Includes:</div>
+                            <ul class="offerings-list">
+                                <li>5-question intake</li>
+                                <li>Prompt/SOP review</li>
+                                <li>Failure-mode analysis</li>
+                                <li>Hardening checklist</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tier 1: Infrastructure Self-Healing -->
+            <div class="rung tier-1">
+                <div class="rung-content">
+                    <div class="tier-badge">1</div>
+                    <div class="rung-info">
+                        <div class="rung-header">
+                            <h3 class="rung-title">Infrastructure Self-Healing</h3>
+                            <span class="verified-tag">Verified</span>
+                        </div>
+                        <p class="rung-promise">"Your AI agents stop failing silently"</p>
+                        <div class="rung-meta">
+                            <div class="meta-item">
+                                <span class="meta-label">Price:</span>
+                                <span class="meta-value">$1,500–$9,000</span>
+                            </div>
+                            <div class="meta-item">
+                                <span class="meta-label">Timeline:</span>
+                                <span class="meta-value">3 days – 4 weeks</span>
+                            </div>
+                            <div class="meta-item">
+                                <span class="meta-label">Proof:</span>
+                                <span class="meta-value">98% downtime reduction</span>
+                            </div>
+                        </div>
+                        <p class="rung-deliverable">
+                            <strong>Deliverable:</strong> Working monitoring dashboard + auto-recovery automation. Real-time health tracking, proactive session refresh, error rate metrics.
+                        </p>
+                        <div class="rung-offerings">
+                            <ul class="offerings-list">
+                                <li>Health dashboard</li>
+                                <li>Auto-recovery scripts</li>
+                                <li>Session management</li>
+                                <li>Error alerting</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tier 2: Documentation Sprint -->
+            <div class="rung tier-2">
+                <div class="rung-content">
+                    <div class="tier-badge">2</div>
+                    <div class="rung-info">
+                        <div class="rung-header">
+                            <h3 class="rung-title">Documentation Sprint</h3>
+                            <span class="verified-tag">Verified</span>
+                        </div>
+                        <p class="rung-promise">"Your team stops asking 'where's the doc?'"</p>
+                        <div class="rung-meta">
+                            <div class="meta-item">
+                                <span class="meta-label">Price:</span>
+                                <span class="meta-value">$500–$1,200</span>
+                            </div>
+                            <div class="meta-item">
+                                <span class="meta-label">Timeline:</span>
+                                <span class="meta-value">2 days</span>
+                            </div>
+                            <div class="meta-item">
+                                <span class="meta-label">Proof:</span>
+                                <span class="meta-value">30-60min → 2min find time</span>
+                            </div>
+                        </div>
+                        <p class="rung-deliverable">
+                            <strong>Deliverable:</strong> Unified documentation index + freshness dashboard. Consolidate scattered docs, standardize formats, track staleness. Essential for multi-agent teams.
+                        </p>
+                        <div class="rung-offerings">
+                            <ul class="offerings-list">
+                                <li>INDEX.md deployment</li>
+                                <li>FRESHNESS dashboard</li>
+                                <li>Gap fixes</li>
+                                <li>Standardization template</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tier 3: Consulting -->
+            <div class="rung tier-3">
+                <div class="rung-content">
+                    <div class="tier-badge">3</div>
+                    <div class="rung-info">
+                        <div class="rung-header">
+                            <h3 class="rung-title">AI Consulting</h3>
+                            <span class="verified-tag">Verified</span>
+                        </div>
+                        <p class="rung-promise">"From AI curiosity to production deployment"</p>
+                        <div class="rung-meta">
+                            <div class="meta-item">
+                                <span class="meta-label">Price:</span>
+                                <span class="meta-value">$75–$500/hr</span>
+                            </div>
+                            <div class="meta-item">
+                                <span class="meta-label">Timeline:</span>
+                                <span class="meta-value">3 days – 6 months</span>
+                            </div>
+                            <div class="meta-item">
+                                <span class="meta-label">Proof:</span>
+                                <span class="meta-value">14 agents in production</span>
+                            </div>
+                        </div>
+                        <p class="rung-deliverable">
+                            <strong>Deliverable:</strong> Custom AI systems with 3-Gate quality protocol. Assessment, roadmap, working code, documentation, training. Flexible engagement model.
+                        </p>
+                        <div class="rung-offerings">
+                            <ul class="offerings-list">
+                                <li>Architecture design</li>
+                                <li>Code implementation</li>
+                                <li>Quality verification</li>
+                                <li>Team training</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Premium: Crew Oversight -->
+            <div class="rung premium">
+                <div class="rung-content">
+                    <div class="tier-badge">★</div>
+                    <div class="rung-info">
+                        <div class="rung-header">
+                            <h3 class="rung-title">Crew Oversight Partnership</h3>
+                            <span class="verified-tag">Verified + SLA</span>
+                        </div>
+                        <p class="rung-promise">"Ship verified AI that stays running — guaranteed"</p>
+                        <div class="rung-meta">
+                            <div class="meta-item">
+                                <span class="meta-label">Price:</span>
+                                <span class="meta-value">$6,000–$25,000</span>
+                            </div>
+                            <div class="meta-item">
+                                <span class="meta-label">Timeline:</span>
+                                <span class="meta-value">2–8 weeks</span>
+                            </div>
+                            <div class="meta-item">
+                                <span class="meta-label">Support:</span>
+                                <span class="meta-value">90-day operations + SLA</span>
+                            </div>
+                        </div>
+                        <p class="rung-deliverable">
+                            <strong>Deliverable:</strong> Pre-launch verification (security scan + adversarial testing) + Post-launch operations (monitoring + auto-recovery + 90-day support). Long-term partnership for teams shipping AI to production.
+                        </p>
+                        <div class="rung-offerings">
+                            <ul class="offerings-list">
+                                <li>Security + adversarial testing</li>
+                                <li>Multi-agent validation</li>
+                                <li>Production monitoring</li>
+                                <li>90-day support guarantee</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA Section -->
+        <div class="cta-section">
+            <h2 class="cta-title">Not Sure Where to Start?</h2>
+            <p class="cta-text">
+                Every engagement begins with the Quick Audit ($300). We'll identify your highest-impact opportunity and recommend the right tier — no commitment required.
+            </p>
+            <a href="index.html#contact" class="cta-button">Start with Quick Audit</a>
+        </div>
+
+        <!-- Offer Summaries -->
+        <div class="summaries-section">
+            <h2 class="summaries-title">Offer Summaries at a Glance</h2>
+            <div class="summary-cards">
+                <div class="summary-card">
+                    <div class="summary-tier">Entry Point</div>
+                    <h3 class="summary-title">Quick Audit</h3>
+                    <div class="summary-price">$300 flat</div>
+                    <p class="summary-desc">72-hour diagnostic of your agent workflow. Identifies top 5 risks and recommends specific fixes. No meetings, async delivery.</p>
+                </div>
+                <div class="summary-card">
+                    <div class="summary-tier">Tier 1</div>
+                    <h3 class="summary-title">Self-Healing Infrastructure</h3>
+                    <div class="summary-price">$1,500–$9,000</div>
+                    <p class="summary-desc">Monitoring + auto-recovery dashboard. Stops agents from failing silently. 98% downtime reduction guarantee.</p>
+                </div>
+                <div class="summary-card">
+                    <div class="summary-tier">Tier 2</div>
+                    <h3 class="summary-title">Documentation Sprint</h3>
+                    <div class="summary-price">$500–$1,200</div>
+                    <p class="summary-desc">2-day infrastructure sprint. Deploys INDEX + FRESHNESS dashboards. Cuts doc find time from 30-60min to 2min.</p>
+                </div>
+                <div class="summary-card">
+                    <div class="summary-tier">Tier 3</div>
+                    <h3 class="summary-title">AI Consulting</h3>
+                    <div class="summary-price">$75–$500/hr</div>
+                    <p class="summary-desc">Custom AI implementation with 3-Gate quality protocol. From assessment through production deployment.</p>
+                </div>
+                <div class="summary-card premium-card">
+                    <div class="summary-tier">Premium Partnership</div>
+                    <h3 class="summary-title">Crew Oversight</h3>
+                    <div class="summary-price">$6,000–$25,000</div>
+                    <p class="summary-desc">Verification + Operations bundle. Pre-launch security testing + 90-day post-launch support with SLA guarantees.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Comparison Table -->
+        <div class="comparison-section">
+            <h2 class="comparison-title">Complete Comparison</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Service Tier</th>
+                        <th>Price</th>
+                        <th>Timeline</th>
+                        <th>Best For</th>
+                        <th>Key Deliverable</th>
+                        <th>Guarantee</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="tier-highlight">Quick Audit</td>
+                        <td>$300 flat</td>
+                        <td>72 hours</td>
+                        <td>First-time clients, exploration</td>
+                        <td>Risk assessment + recommendations</td>
+                        <td>Actionable findings or refund</td>
+                    </tr>
+                    <tr>
+                        <td class="tier-highlight">Self-Healing</td>
+                        <td>$1,500–$9,000</td>
+                        <td>3 days – 4 weeks</td>
+                        <td>Agent reliability issues</td>
+                        <td>Monitoring + auto-recovery system</td>
+                        <td>98% downtime reduction</td>
+                    </tr>
+                    <tr>
+                        <td class="tier-highlight">Documentation</td>
+                        <td>$500–$1,200</td>
+                        <td>2 days</td>
+                        <td>Multi-agent doc chaos</td>
+                        <td>INDEX + FRESHNESS dashboards</td>
+                        <td>1.5+ point debt improvement</td>
+                    </tr>
+                    <tr>
+                        <td class="tier-highlight">Consulting</td>
+                        <td>$75–$500/hr</td>
+                        <td>3 days – 6 months</td>
+                        <td>Custom AI implementation</td>
+                        <td>Production-ready systems</td>
+                        <td>3-Gate quality verified</td>
+                    </tr>
+                    <tr>
+                        <td class="tier-highlight">Crew Oversight</td>
+                        <td>$6,000–$25,000</td>
+                        <td>2–8 weeks</td>
+                        <td>Teams shipping AI to production</td>
+                        <td>Verified launch + 90-day ops</td>
+                        <td>90%+ uptime SLA</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <footer>
+            <div class="verification-footer">Verified by BobRenze</div>
+            <p>BobRenze Crew • 14 autonomous agents in production • 7+ months of crew operations</p>
+            <p style="margin-top: 10px; font-size: 0.8rem;">All services include structured verification, transparent pricing, and quantified proof points</p>
+        </footer>
+    </div>
+</body>
+</html>
+</content>
